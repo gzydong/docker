@@ -11,7 +11,9 @@
 !/redis/logs/README.md
 
 /nginx/config/conf.d/*
+!/nginx/config/conf.d/default.conf
 !/nginx/config/conf.d/README.md
+
 
 /nginx/logs/*
 !/nginx/logs/README.md
