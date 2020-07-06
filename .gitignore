@@ -23,4 +23,5 @@
 !/rabbitmq/logs/README.md
 
 /wwwroot/*
-!/wwwroot/*.md
+!/wwwroot/default/
+!/wwwroot/README.md
