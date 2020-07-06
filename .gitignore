@@ -1,14 +1,24 @@
 /mysql/data/*
+!/mysql/data/README.md
+
 /mysql/logs/*
+!/mysql/logs/README.md
 
 /redis/data/*
+!/redis/data/README.md
+
 /redis/logs/*
+!/redis/logs/README.md
 
 /nginx/config/conf.d/*
 /nginx/logs/*
+!/nginx/logs/README.md
+
 
 /rabbitmq/data/*
+!/rabbitmq/data/README.md
 /rabbitmq/logs/*
+!/rabbitmq/logs/README.md
 
 /wwwroot/*
 !/wwwroot/*.md
