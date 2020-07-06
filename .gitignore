@@ -1,15 +1,14 @@
-/mysql/data/
-/mysql/logs/
+/mysql/data/*
+/mysql/logs/*
 
+/redis/data/*
+/redis/logs/*
 
-/redis/data/
-/redis/logs/
+/nginx/config/conf.d/*
+/nginx/logs/*
 
-/nginx/config/conf.d/
-/nginx/logs/
+/rabbitmq/data/*
+/rabbitmq/logs/*
 
-/rabbitmq/data/
-/rabbitmq/logs/
-
-
-/wwwroot/
+/wwwroot/*
+!/wwwroot/*.md
