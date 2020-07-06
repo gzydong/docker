@@ -1,1 +1,1 @@
-### DNMP（Docker + Nginx + MySQL + PHP7/5 + Redis）是一款快速部署LNMP开发安装程序
+### DNMP（Docker + Nginx + MySQL + PHP7/5 + Redis）是一款快速部署LNMP开发环境的安装程序
