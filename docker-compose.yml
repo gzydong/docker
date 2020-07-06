@@ -1,0 +1,76 @@
+version: "3.6"
+services:
+  php:
+    build: ./php
+    image: dnmp/php   #指定构建的镜像名称
+    container_name: dnmp_php # 指定创建的容器名称
+    expose:
+      - "9000"
+    volumes:
+      - ./wwwroot:/var/www
+      - ./php/config/php.ini:/usr/local/etc/php/php.ini:ro
+      - ./php/config/www.conf:/usr/local/etc/php-fpm.d/www.conf:rw
+      - ./php/logs:/var/log/php
+    restart: always
+    environment:
+      TZ: "${TZ}"
+
+  nginx:
+    image: nginx:alpine
+    container_name: dnmp_nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    restart: always
+    links:
+      - php
+    volumes:
+      - ./nginx/config/conf.d:/etc/nginx/conf.d/
+      - ./nginx/config/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/logs/:/var/log/nginx/:rw
+      - ./wwwroot:/var/www/:rw
+    environment:
+      TZ: "${TZ}"
+
+  redis:
+    image: redis:5.0-alpine
+    container_name: dnmp_redis
+    ports:
+      - "6380:6379"
+    restart: always
+    volumes:
+      - ./redis/config/redis.conf:/etc/redis/redis.conf:rw
+      - ./redis/config/sentinel.conf:/etc/redis/sentinel.conf:rw
+      - ./redis/data:/data
+      - ./redis/logs:/var/log/redis
+    environment:
+      TZ: "${TZ}"
+    command: redis-server /etc/redis/redis.conf
+
+  mysql:
+    image: mysql:5.7.30
+    container_name: dnmp_mysql
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql/config/mysql.cnf:/etc/mysql/conf.d/mysql.cnf:ro
+      - ./mysql/data:/var/lib/mysql/:rw
+      - ./mysql/logs:/var/log/mysql/:rw
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: "aa123456"
+      TZ: "${TZ}"
+
+  rabbitmq:
+    image: rabbitmq:management
+    container_name: dnmp_rabbitmq
+    restart: always
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - ./rabbitmq/data:/var/lib/rabbitmq:rw
+    environment:
+        TZ: "${TZ}"
+        RABBITMQ_DEFAULT_USER: "test"
+        RABBITMQ_DEFAULT_PASS: "test123456"

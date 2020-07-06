@@ -1,0 +1,15 @@
+/mysql/data/
+/mysql/logs/
+
+
+/redis/data/
+/redis/logs/
+
+/nginx/config/conf.d/
+/nginx/logs/
+
+/rabbitmq/data/
+/rabbitmq/logs/
+
+
+/wwwroot/

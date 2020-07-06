@@ -1,0 +1,23 @@
+[mysqld]
+pid-file	= /var/run/mysqld/mysqld.pid
+socket		= /var/run/mysqld/mysqld.sock
+datadir		= /var/lib/mysql
+
+default-time_zone = '+8:00'
+
+log_timestamps = SYSTEM
+
+#是否启用通用查询日志
+general-log = on                     
+general_log_file   =  /var/log/mysql/mysql.log
+
+# 错误日志
+log-error	= /var/log/mysql/error.log
+
+# slow query log  
+slow_query_log = 1
+long-query-time = 1 #慢查询时间 超过1秒则为慢查询  
+slow_query_log_file = /var/log/mysql/slow.log
+
+[mysql]
+default-character-set   = utf8mb4
